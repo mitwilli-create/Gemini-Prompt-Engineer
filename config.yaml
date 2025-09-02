@@ -1,0 +1,18 @@
+# config.yaml
+- name: gemini_prompt_engineer_tracker
+  type: API
+  description: "Connects to the GitHub REST API to track public repositories related to 'prompt engineering'."
+  authentication:
+    type: API_KEY
+    key_name: GITHUB_API_KEY
+    delivery: "HTTP Bearer Token in 'Authorization' header."
+    instructions: "Generate a GitHub Personal Access Token (classic) with 'public_repo' scope."
+  endpoint:
+    base_url: "https://api.github.com"
+    path: "/search/repositories"
+    http_method: "GET"
+    parameters:
+      - name: "q"
+        value: "prompt engineering"
+      - name: "sort"
+        value: "stars"
